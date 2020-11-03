@@ -13,6 +13,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   # config.vm.box = "bento/ubuntu-16.04"
+  # OS 이미지 선택
   config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
@@ -71,12 +72,11 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
-  config.vm.provision "file", source: "conf/rabbitmq/definitions.json", destination: "/home/vagrant/conf/rabbitmq/definitions.json"
-  config.vm.provision "file", source: "conf/rabbitmq/rabbitmq.config", destination: "/home/vagrant/conf/rabbitmq/rabbitmq.config"
+
+  # conf/test.conf 파일을 가상머신 /home/vagrant/conf/test.conf 복사
+  config.vm.provision "file", source: "conf/test.conf", destination: "/home/vagrant/conf/test.conf"
 
 
-
-  # config.vm.provision "file", source: "conf/celery", destination: "/home/vagrant/conf/celery"
-
+  # 쉘스크립트 수행.
   config.vm.provision "shell", path: "vagrant_provisioning_18_04.sh"
 end

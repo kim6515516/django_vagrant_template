@@ -36,16 +36,11 @@ sudo systemctl enable redis-server.service
 
 # install rabbitmq
 sudo apt-get install rabbitmq-server -y
-
 sudo rabbitmq-plugins enable rabbitmq_management
 sudo rabbitmq-plugins enable rabbitmq_federation
 sudo rabbitmq-plugins enable rabbitmq_federation_management
 
 # setting rabbitmq
-#rabbitmqadmin import /home/vagrant/conf/rabbitmq/definitions.json
-sudo cp -rf /home/vagrant/conf/rabbitmq/definitions.json /etc/rabbitmq/
-sudo cp -rf /home/vagrant/conf/rabbitmq/rabbitmq.config /etc/rabbitmq/
-
 sudo service rabbitmq-server restart
 
 
@@ -53,14 +48,6 @@ sudo service rabbitmq-server restart
 
 
 # simbol link
-mkdir -p /home/vagrant/virtualenv/bin
-chown -R vagrant.vagrant /home/vagrant/virtualenv/bin
-
-ln -s /usr/bin/python3 /home/vagrant/virtualenv/bin/python3
-ln -s /usr/bin/python3 /home/vagrant/virtualenv/bin/python
-
-chown -R vagrant.vagrant /home/vagrant/virtualenv/bin/python3
-chown -R vagrant.vagrant /home/vagrant/virtualenv/bin/python
 
 
 # install kerberos
